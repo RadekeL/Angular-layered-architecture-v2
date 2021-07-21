@@ -5,8 +5,8 @@ import { TasksStateComponent } from './tasks-state.component';
 
 @Injectable()
 export class TasksFacade {
-  completedTasks$ = this.taskState.completedTasks$;
-  todoTasks$ = this.taskState.todoTasks$;
+  completedTasks$ = this.taskState.selectCompletedTasks$;
+  todoTasks$ = this.taskState.selectTodoTasks$;
 
   constructor(
     private readonly taskService: TasksApiService,
@@ -14,7 +14,7 @@ export class TasksFacade {
   ) {}
 
   addTask(title: string) {
-    this.taskState.lastIdTask$.subscribe((lastId: number) => {
+    this.taskState.selectLastIdTask$.subscribe((lastId: number) => {
       const task = new TasksFactory(title, lastId).create();
       this.taskState.addTask(task);
     });
