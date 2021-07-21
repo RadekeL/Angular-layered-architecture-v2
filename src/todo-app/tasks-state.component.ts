@@ -1,7 +1,7 @@
 import { Injectable, OnInit } from '@angular/core';
-import { BehaviorSubject, mergeMap, pluck } from 'rxjs';
+import { BehaviorSubject, pluck } from 'rxjs';
 import { Observable } from 'rxjs';
-import { filter, find, first, map, tap, toArray } from 'rxjs/operators';
+import { first, map } from 'rxjs/operators';
 import { USER_ID } from '../consts';
 import { Task } from '../interfaces/task.interface';
 
@@ -28,58 +28,49 @@ export class TasksStateComponent implements OnInit {
     this._state$.next({ ...this._state$.value, tasks });
   }
 
-  // TODO - użyj gotowego selectora
   public deleteTask(taskId: number) {
-    return this.tasks$
-      .pipe(
-        first(),
-        map((tasks: Task[]) => tasks.filter(task => task.id !== taskId))
-      )
-      .subscribe(tasks => this.setTasks(tasks));
+    const { tasks } = this._state$.getValue();
+    const tasksWithoutDeletedElement: Task[] = tasks.filter(
+      task => task.id !== taskId
+    );
+    this.setTasks(tasksWithoutDeletedElement);
   }
 
   public addTask(task: Task) {
-    this.tasks$
-      .pipe(first())
-      .subscribe((tasks: Task[]) => this.setTasks([...tasks, task]));
+    const { tasks } = this._state$.getValue();
+    this.setTasks([...tasks, task]);
   }
 
   public completeTask(taskId: number) {
-    return this.tasks$
-      .pipe(
-        first(),
-        mergeMap((tasks: Task[]) => tasks),
-        map((task: Task) =>
-          task.id === taskId ? { ...task, completed: true } : task
-        ),
-        toArray()
-      )
-      .subscribe((tasks: Task[]) => this.setTasks(tasks));
+    const { tasks } = this._state$.getValue();
+    const index = tasks.findIndex(task => task.id === taskId);
+
+    tasks[index] = { ...tasks[index], completed: true };
+    this.setTasks(tasks);
   }
 
   // ** Selectors
-
-  public get tasks$(): Observable<Task[]> {
+  public get selectTasks$(): Observable<Task[]> {
     return this._stateAsObservable$.pipe(
       pluck('tasks'),
       map((tasks: Task[]) => tasks.filter(task => task.userId === USER_ID))
     );
   }
 
-  public get todoTasks$() {
-    return this.tasks$.pipe(
+  public get selectTodoTasks$() {
+    return this.selectTasks$.pipe(
       map((tasks: Task[]) => tasks.filter(task => !task.completed))
     );
   }
 
-  public get completedTasks$() {
-    return this.tasks$.pipe(
+  public get selectCompletedTasks$() {
+    return this.selectTasks$.pipe(
       map((tasks: Task[]) => tasks.filter(task => !!task.completed))
     );
   }
 
-  public get lastIdTask$() {
-    return this.tasks$.pipe(
+  public get selectLastIdTask$() {
+    return this.selectTasks$.pipe(
       first(),
       map((tasks: Task[]) => {
         const last = tasks.length - 1;
