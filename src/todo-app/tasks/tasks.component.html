@@ -1,0 +1,15 @@
+<div class="container bg-primary border border-5 border-primary">
+  <div class="row">
+    <div class="col">
+      <app-add-tasks (onTaskAdded)="addTask($event)"></app-add-tasks>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <app-todo-tasks (onComplete)="completeTask($event)" (onDelete)="deleteTask($event)" [tasks$]="todoTasks$"></app-todo-tasks>
+    </div>
+    <div class="col">
+      <app-completed-tasks (onDelete)="deleteTask($event)" [tasks$]="completedTasks$"></app-completed-tasks>
+    </div>
+  </div>
+</div>

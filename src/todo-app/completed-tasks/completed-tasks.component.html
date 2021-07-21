@@ -1,0 +1,8 @@
+<app-tasks-list (onEdit)="editTask()" title="COMPLETED">
+  <li class="list-group-item" *ngFor="let task of tasks$ | async">
+    {{task.title}}
+    <button type="button" class="btn btn-dark" (click)="deleteTask(task)">-</button>
+    <button type="button" class="btn btn-dark">EDIT</button>
+
+  </li>
+</app-tasks-list>

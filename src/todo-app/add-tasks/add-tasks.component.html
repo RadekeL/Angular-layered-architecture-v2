@@ -1,0 +1,12 @@
+<div class="container">
+  <form class="d-flex justify-content-center" #form="ngForm" (ngSubmit)="onSubmit(form)" novalidate>
+    <div class="col-4">
+      <div class="form-outline">
+        <input name="task" type="text" ngModel #addTask="ngModel" id="typeText" class="form-control" [ngModelOptions]="{name: 'title'}" />
+      </div>
+    </div>
+    <div class="col-1">
+      <button type="submit" class="btn btn-warning">+</button>
+    </div>
+  </form>
+</div>
