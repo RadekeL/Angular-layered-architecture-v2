@@ -15,8 +15,8 @@ export class CompletedTasksComponent implements OnInit {
 
   ngOnInit() {}
 
-  deleteTask(task: Task) {
-    this.onDelete.emit(task.id);
+  deleteTask(id: number) {
+    this.onDelete.emit(id);
   }
   editTask() {}
 }

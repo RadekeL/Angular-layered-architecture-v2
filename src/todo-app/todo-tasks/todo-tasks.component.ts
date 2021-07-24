@@ -16,14 +16,13 @@ export class TodoTasksComponent implements OnInit {
 
   ngOnInit() {}
 
-  deleteTask(task: Task) {
-    this.onDelete.emit(task.id);
+  deleteTask(id: number) {
+    this.onDelete.emit(id);
   }
 
   editTask() {}
 
-  completeTask(task: Task) {
-    this.onComplete.emit(task.id)
+  completeTask(id: number) {
+    this.onComplete.emit(id);
   }
-
 }

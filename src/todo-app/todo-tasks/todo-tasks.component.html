@@ -1,5 +1,8 @@
 <app-tasks-list title="TODO" (onEdit)="editTask()">
-  <li class="list-group-item" *ngFor="let task of tasks$ | async">
+<app-task *ngFor="let task of tasks$ | async" [task]="task" (onEdit)="editTask()" (onDelete)="deleteTask($event)" (onComplete)="completeTask($event)">
+</app-task>
+
+  <!-- <li class="list-group-item" *ngFor="let task of tasks$ | async">
     <input class="form-check-input me-1" 
     type="checkbox" 
     [checked]="task.completed"
@@ -9,6 +12,6 @@
     <button type="button" class="btn btn-dark" (click)="deleteTask(task)">-</button>
     <button type="button" class="btn btn-dark">EDIT</button>
 
-  </li>
+  </li> -->
 
 </app-tasks-list>

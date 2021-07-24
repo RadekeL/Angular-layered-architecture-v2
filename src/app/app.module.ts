@@ -24,7 +24,7 @@ import { TaskComponent } from '../todo-app/task/task.component';
     CompletedTasksComponent,
     TodoTasksComponent,
     TasksListComponent,
-    TasksComponent
+    TasksComponent,
     TaskComponent
   ],
   providers: [TasksStateComponent, TasksApiService, TasksFacade],
