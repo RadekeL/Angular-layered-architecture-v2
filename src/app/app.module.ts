@@ -15,9 +15,17 @@ import { TasksFacade } from '../todo-app/tasks-facade';
 import { HttpClientModule } from '@angular/common/http';
 import { TaskComponent } from '../todo-app/task/task.component';
 import { TasksStateAdapter } from '../todo-app/tasks-state.adapter';
+import { MatMenuModule } from '@angular/material/menu';
+import { PortalModule } from '@angular/cdk/portal';
 
 @NgModule({
-  imports: [BrowserModule, FormsModule, HttpClientModule],
+  imports: [
+    BrowserModule,
+    FormsModule,
+    HttpClientModule,
+    MatMenuModule,
+    PortalModule
+  ],
   declarations: [
     AppComponent,
     HelloComponent,
