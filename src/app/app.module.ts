@@ -14,6 +14,7 @@ import { TasksComponent } from '../todo-app/tasks/tasks.component';
 import { TasksFacade } from '../todo-app/tasks-facade';
 import { HttpClientModule } from '@angular/common/http';
 import { TaskComponent } from '../todo-app/task/task.component';
+import { TasksStateAdapter } from '../todo-app/tasks-state.adapter';
 
 @NgModule({
   imports: [BrowserModule, FormsModule, HttpClientModule],
@@ -27,7 +28,12 @@ import { TaskComponent } from '../todo-app/task/task.component';
     TasksComponent,
     TaskComponent
   ],
-  providers: [TasksStateComponent, TasksApiService, TasksFacade],
+  providers: [
+    TasksStateComponent,
+    TasksApiService,
+    TasksFacade,
+    TasksStateAdapter
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

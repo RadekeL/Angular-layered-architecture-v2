@@ -2,10 +2,10 @@
   <input *ngIf="!task.completed" class="form-check-input me-1"
 type="checkbox"
 [checked]="task.completed"
-(change)="completeTask(task)"
+(change)="completeTask()"
 value="true" aria-label="...">
   {{ task.title }}
-  <button type="button" class="btn btn-dark" (click)="deleteTask(task)">-</button>
+  <button type="button" class="btn btn-dark" (click)="deleteTask()">-</button>
   <button type="button" class="btn btn-dark">EDIT</button>
 
 </li>

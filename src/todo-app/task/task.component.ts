@@ -7,23 +7,20 @@ import { Task } from '../../interfaces/task.interface';
   styleUrls: ['./task.component.css']
 })
 export class TaskComponent implements OnInit {
-  
   @Input() task: Task;
   @Output() onDelete = new EventEmitter<number>();
   @Output() onEdit = new EventEmitter<string>();
   @Output() onComplete = new EventEmitter<number>();
 
-  constructor() { }
+  constructor() {}
 
-  ngOnInit() {
+  ngOnInit() {}
+
+  deleteTask() {
+    this.onDelete.emit(this.task.id);
   }
 
-  deleteTask(task: Task) {
-    this.onDelete.emit(task.id);
+  completeTask() {
+    this.onComplete.emit(this.task.id);
   }
-
-  completeTask(task: Task) {
-    this.onComplete.emit(task.id)
-  }
-
 }
