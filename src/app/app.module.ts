@@ -17,6 +17,7 @@ import { TaskComponent } from '../todo-app/task/task.component';
 import { TasksStateAdapter } from '../todo-app/tasks-state.adapter';
 import { MatMenuModule } from '@angular/material/menu';
 import { PortalModule } from '@angular/cdk/portal';
+import { DropdownMenuComponent } from '../dropdown-menu/dropdown-menu.component';
 
 @NgModule({
   imports: [
@@ -34,7 +35,8 @@ import { PortalModule } from '@angular/cdk/portal';
     TodoTasksComponent,
     TasksListComponent,
     TasksComponent,
-    TaskComponent
+    TaskComponent,
+    DropdownMenuComponent
   ],
   providers: [
     TasksStateComponent,
