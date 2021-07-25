@@ -38,6 +38,7 @@ import { DropdownMenuComponent } from '../dropdown-menu/dropdown-menu.component'
     TaskComponent,
     DropdownMenuComponent
   ],
+  entryComponents: [DropdownMenuComponent],
   providers: [
     TasksStateComponent,
     TasksApiService,
