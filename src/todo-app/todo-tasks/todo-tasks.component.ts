@@ -9,7 +9,7 @@ import { Task } from '../../interfaces/task.interface';
 })
 export class TodoTasksComponent implements OnInit {
   @Output() onDelete = new EventEmitter<number>();
-  @Output() onEdit = new EventEmitter<string>();
+  @Output() onEdit = new EventEmitter<number>();
   @Output() onComplete = new EventEmitter<number>();
   @Input() tasks$: Observable<Task[]>;
   constructor() {}
@@ -20,7 +20,9 @@ export class TodoTasksComponent implements OnInit {
     this.onDelete.emit(id);
   }
 
-  editTask() {}
+  editTask(id: number) {
+    this.onEdit.emit(id);
+  }
 
   completeTask(id: number) {
     this.onComplete.emit(id);

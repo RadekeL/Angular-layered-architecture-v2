@@ -22,7 +22,10 @@ export class TasksComponent implements OnInit {
     this.facade.addTask(task);
   }
 
-  editTask() {}
+  editTask(id) {
+    // this.facade.editTask(id);
+    // console.log('TASK id :', id);
+  }
 
   loadTasks() {}
 

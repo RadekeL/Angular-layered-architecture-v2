@@ -1,6 +1,7 @@
-<app-tasks-list title="TODO" (onEdit)="editTask()">
-<app-task *ngFor="let task of tasks$ | async" [task]="task" (onEdit)="editTask()" (onDelete)="deleteTask($event)" (onComplete)="completeTask($event)">
-</app-task>
+<app-tasks-list title="TODO">
+  <app-task *ngFor="let task of tasks$ | async" [task]="task" (onEdit)="editTask($event)"
+    (onDelete)="deleteTask($event)" (onComplete)="completeTask($event)">
+  </app-task>
 
   <!-- <li class="list-group-item" *ngFor="let task of tasks$ | async">
     <input class="form-check-input me-1" 

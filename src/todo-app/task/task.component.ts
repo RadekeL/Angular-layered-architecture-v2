@@ -9,7 +9,7 @@ import { Task } from '../../interfaces/task.interface';
 export class TaskComponent implements OnInit {
   @Input() task: Task;
   @Output() onDelete = new EventEmitter<number>();
-  @Output() onEdit = new EventEmitter<string>();
+  @Output() onEdit = new EventEmitter<number>();
   @Output() onComplete = new EventEmitter<number>();
 
   constructor() {}
@@ -22,5 +22,9 @@ export class TaskComponent implements OnInit {
 
   completeTask() {
     this.onComplete.emit(this.task.id);
+  }
+
+  editTask() {
+    this.onEdit.emit(this.task.id)
   }
 }

@@ -5,9 +5,8 @@ type="checkbox"
 (change)="completeTask()"
 value="true" aria-label="...">
   {{ task.title }}
-  <button mat-button [matMenuTriggerFor]="menu">Menu</button>
-  <mat-menu #menu="matMenu">
-    <button mat-menu-item>Item 1</button>
-    <button mat-menu-item>Item 2</button>
-  </mat-menu>
+  <app-dropdown-menu>
+    <button mat-menu-item (click)="editTask()">Edit</button>
+    <button mat-menu-item (click)="deleteTask()">Delete</button>
+  </app-dropdown-menu>
 </li>

@@ -6,10 +6,12 @@
   </div>
   <div class="row">
     <div class="col">
-      <app-todo-tasks (onComplete)="completeTask($event)" (onDelete)="deleteTask($event)" [tasks$]="todoTasks$"></app-todo-tasks>
+      <app-todo-tasks (onComplete)="completeTask($event)" (onDelete)="deleteTask($event)" (onEdit)="editTask($event)"
+        [tasks$]="todoTasks$"></app-todo-tasks>
     </div>
     <div class="col">
-      <app-completed-tasks (onDelete)="deleteTask($event)" [tasks$]="completedTasks$"></app-completed-tasks>
+      <app-completed-tasks (onDelete)="deleteTask($event)" (onEdit)="editTask($event)" [tasks$]="completedTasks$">
+      </app-completed-tasks>
     </div>
   </div>
 </div>
