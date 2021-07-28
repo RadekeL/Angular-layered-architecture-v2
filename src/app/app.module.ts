@@ -18,6 +18,10 @@ import { TasksStateAdapter } from '../todo-app/tasks-state.adapter';
 import { MatMenuModule } from '@angular/material/menu';
 import { PortalModule } from '@angular/cdk/portal';
 import { DropdownMenuComponent } from '../dropdown-menu/dropdown-menu.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { MatNativeDateModule } from '@angular/material/core';
+import { MaterialModule } from '../material-module/material-module';
 
 @NgModule({
   imports: [
@@ -25,7 +29,11 @@ import { DropdownMenuComponent } from '../dropdown-menu/dropdown-menu.component'
     FormsModule,
     HttpClientModule,
     MatMenuModule,
-    PortalModule
+    PortalModule,
+    BrowserAnimationsModule,
+    MatAutocompleteModule,
+    MaterialModule,
+    MatNativeDateModule
   ],
   declarations: [
     AppComponent,
@@ -38,7 +46,7 @@ import { DropdownMenuComponent } from '../dropdown-menu/dropdown-menu.component'
     TaskComponent,
     DropdownMenuComponent
   ],
-  entryComponents: [DropdownMenuComponent],
+  // entryComponents: [TasksListComponent],
   providers: [
     TasksStateComponent,
     TasksApiService,
