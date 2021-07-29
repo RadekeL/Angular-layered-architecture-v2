@@ -7,6 +7,7 @@ import { TasksStateAdapter } from './tasks-state.adapter';
 export class TasksFacade {
   completedTasks$ = this.stateAdapter.selectCompletedTasks$;
   todoTasks$ = this.stateAdapter.selectTodoTasks$;
+  editedTask = this.stateAdapter.editedTaskId$;
 
   constructor(
     private readonly taskService: TasksApiService,
@@ -20,7 +21,12 @@ export class TasksFacade {
     });
   }
 
-  editTask() {}
+  editTask(id: number) {
+    this.stateAdapter.editTask(id);
+  }
+  disableTask() {
+    this.stateAdapter.disableTask();
+  }
 
   loadTasks() {
     this.taskService.getTasks().subscribe(tasks => {

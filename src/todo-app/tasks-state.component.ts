@@ -1,18 +1,21 @@
 import { Injectable, OnInit } from '@angular/core';
 import { BehaviorSubject, pluck } from 'rxjs';
 import { Observable } from 'rxjs';
-import { first, map } from 'rxjs/operators';
+import { first, map, mergeMap, tap, toArray } from 'rxjs/operators';
 import { USER_ID } from '../consts';
 import { Task } from '../interfaces/task.interface';
+import { TaskModel } from './models/task.model';
 
 type TasksState = {
   tasks: Task[];
+  editedTaskId: number;
 };
 
 @Injectable()
 export class TasksStateComponent implements OnInit {
   private initState: TasksState = {
-    tasks: []
+    tasks: [],
+    editedTaskId: null
   };
 
   private _state$ = new BehaviorSubject<TasksState>(this.initState);
@@ -49,6 +52,14 @@ export class TasksStateComponent implements OnInit {
     this.setTasks(tasks);
   }
 
+  public editTask(editedTaskId: number) {
+    this._state$.next({ ...this._state$.value, editedTaskId });
+  }
+
+  public disableTask() {
+    this._state$.next({ ...this._state$.value, editedTaskId: null });
+  }
+
   // ** Selectors
   public get selectTasks$(): Observable<Task[]> {
     return this._stateAsObservable$.pipe(
@@ -57,15 +68,19 @@ export class TasksStateComponent implements OnInit {
     );
   }
 
-  public get selectTodoTasks$() {
+  public get selectTodoTasks$(): Observable<Task[]> {
     return this.selectTasks$.pipe(
       map((tasks: Task[]) => tasks.filter(task => !task.completed))
+      // !!!!!!
+      // map((tasks: Task[]) => tasks.map(task => new TaskModel(task)))
     );
   }
 
-  public get selectCompletedTasks$() {
+  public get selectCompletedTasks$(): Observable<Task[]> {
     return this.selectTasks$.pipe(
       map((tasks: Task[]) => tasks.filter(task => !!task.completed))
+      // !!!!!!
+      // map((tasks: Task[]) => tasks.map(task => new TaskModel(task)))
     );
   }
 
@@ -77,5 +92,9 @@ export class TasksStateComponent implements OnInit {
         return tasks[last].id;
       })
     );
+  }
+
+  public get editedTaskId$() {
+    return this._stateAsObservable$.pipe(pluck('editedTaskId'));
   }
 }

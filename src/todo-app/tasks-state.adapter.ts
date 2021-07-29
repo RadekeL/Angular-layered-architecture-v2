@@ -23,6 +23,14 @@ export class TasksStateAdapter {
     this.taskState.deleteTask(taskId);
   }
 
+  disableTask() {
+    this.taskState.disableTask();
+  }
+
+  editTask(id: number) {
+    this.taskState.editTask(id);
+  }
+
   public get selectLastIdTask(): Observable<number> {
     return this.taskState.selectLastIdTask$;
   }
@@ -41,5 +49,9 @@ export class TasksStateAdapter {
 
   public get selectLastIdTask$() {
     return this.taskState.selectLastIdTask$;
+  }
+
+  public get editedTaskId$() {
+    return this.taskState.editedTaskId$;
   }
 }
