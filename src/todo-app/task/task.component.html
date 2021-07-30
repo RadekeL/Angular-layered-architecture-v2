@@ -1,12 +1,31 @@
 <li class="list-group-item">
-  <input *ngIf="!task.completed" class="form-check-input me-1"
+
+  <div class="input-group mb-3">
+    <div *ngIf="!task.completed" class="input-group-text">
+      <input class="form-check-input mt-0" type="checkbox" value=""
+      [checked]="task.completed"
+(change)="completeTask()" aria-label="Checkbox for following text input">
+    </div>
+
+    <input type="text" class="form-control" [value]="task.title" aria-label="Recipient's username" aria-describedby="button-addon2" [disabled]="disabled">
+
+
+
+
+    <app-dropdown-menu class="btn btn-outline-secondary">
+      <button mat-menu-item (click)="editTask()">Edit</button>
+      <button mat-menu-item (click)="deleteTask()">Delete</button>
+    </app-dropdown-menu>
+
+    <!-- </div> -->
+  </div>
+
+  <!-- <input *ngIf="!task.completed" class="form-check-input me-1"
 type="checkbox"
 [checked]="task.completed"
 (change)="completeTask()"
 value="true" aria-label="...">
-  {{ task.title }}
-  <app-dropdown-menu>
-    <button mat-menu-item (click)="editTask()">Edit</button>
-    <button mat-menu-item (click)="deleteTask()">Delete</button>
-  </app-dropdown-menu>
+
+  <input [value]="task.title" [disabled]="disabled" class="task_title" type="text"/> -->
+  <!-- {{ task.title }} + {{ disabled }} -->
 </li>

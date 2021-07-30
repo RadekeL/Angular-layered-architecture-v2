@@ -7,10 +7,11 @@ import { Task } from '../../interfaces/task.interface';
   styleUrls: ['./task.component.css']
 })
 export class TaskComponent implements OnInit {
-  @Input() task: Task;
   @Output() onDelete = new EventEmitter<number>();
   @Output() onEdit = new EventEmitter<number>();
   @Output() onComplete = new EventEmitter<number>();
+  @Input() task: Task;
+  @Input() disabled = true;
 
   constructor() {}
 

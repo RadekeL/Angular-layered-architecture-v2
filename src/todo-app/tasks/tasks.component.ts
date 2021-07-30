@@ -11,6 +11,7 @@ import { Task } from '../../interfaces/task.interface';
 export class TasksComponent implements OnInit {
   completedTasks$ = this.facade.completedTasks$;
   todoTasks$ = this.facade.todoTasks$;
+  editedTaskId$ = this.facade.editedTask$;
 
   constructor(private readonly facade: TasksFacade) {}
 
@@ -24,6 +25,10 @@ export class TasksComponent implements OnInit {
 
   editTask(id: number) {
     this.facade.editTask(id);
+  }
+
+  disableTask() {
+    this.facade.disableTask();
   }
 
   loadTasks() {}
