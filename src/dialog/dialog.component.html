@@ -1,5 +1,11 @@
-<h1 mat-dialog-title>Dialog with elements</h1>
-<div mat-dialog-content>This dialog showcases the title, close, content and actions elements.</div>
+<h1 mat-dialog-title>Edit task title</h1>
+<div mat-dialog-content>
+  <mat-form-field appearance="fill">
+    <mat-label>Favorite Animal</mat-label>
+    <input matInput [(ngModel)]="data.title">
+  </mat-form-field>
+</div>
 <div mat-dialog-actions>
-  <button mat-button mat-dialog-close >Close</button>
+  <button mat-button (click)="onNoClick()">No Thanks</button>
+  <button mat-button [mat-dialog-close]="data.title" cdkFocusInitial>Ok</button>
 </div>

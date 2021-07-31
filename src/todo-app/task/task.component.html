@@ -1,16 +1,13 @@
 <li class="list-group-item">
 
-  <div class="input-group mb-3">
-    <div *ngIf="!task.completed" class="input-group-text">
-      <input class="form-check-input mt-0" type="checkbox" value=""
+  <input  *ngIf="!task.completed" class="form-check-input mt-0" type="checkbox" value=""
       [checked]="task.completed"
 (change)="completeTask()" aria-label="Checkbox for following text input">
-    </div>
 
-    <input #taskField type="text" class="form-control" [value]="task.title" aria-label="Recipient's username" (blur)="lockTask($event)" (keyup.enter)="lockTask($event)" aria-describedby="button-addon2" [disabled]="disabled">
+    {{task.title}}
+  <!-- <input #taskField type="text" class="form-control" [value]="task.title" aria-label="Recipient's username" (blur)="lockTask($event)" (keyup.enter)="lockTask($event)" aria-describedby="button-addon2" [disabled]="disabled"> -->
 
-    <button   mat-button (click)="editTask()" [disabled]="!disabled"> Edit</button>
-    <button (click)="deleteTask()">Delete</button>
+  <button   mat-button (click)="editTask()"> Edit</button>
+  <button (click)="deleteTask()">Delete</button>
 
-  </div>
 </li>

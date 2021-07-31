@@ -22,10 +22,6 @@ export class TaskComponent implements OnInit {
   @Output() onComplete = new EventEmitter<number>();
   @Input() task: Task;
 
-  @ViewChild('taskField') taskRef: ElementRef<HTMLInputElement>;
-
-  public disabled = true;
-
   constructor(public dialog: MatDialog) {}
 
   ngOnInit() {}
@@ -42,7 +38,6 @@ export class TaskComponent implements OnInit {
     console.log(event.target.value);
 
     this.onEdit.emit('');
-    this.disabled = true;
   }
 
   editTask() {
