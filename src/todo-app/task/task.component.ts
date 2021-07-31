@@ -1,4 +1,12 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import {
+  Component,
+  ElementRef,
+  EventEmitter,
+  Input,
+  OnInit,
+  Output,
+  ViewChild
+} from '@angular/core';
 import { Task } from '../../interfaces/task.interface';
 
 @Component({
@@ -11,7 +19,10 @@ export class TaskComponent implements OnInit {
   @Output() onEdit = new EventEmitter<number>();
   @Output() onComplete = new EventEmitter<number>();
   @Input() task: Task;
-  @Input() disabled = true;
+
+  @ViewChild('taskField') taskRef: ElementRef<HTMLInputElement>;
+
+  public disabled = true;
 
   constructor() {}
 
@@ -26,6 +37,6 @@ export class TaskComponent implements OnInit {
   }
 
   editTask() {
-    this.onEdit.emit(this.task.id)
+    this.disabled = false;
   }
 }

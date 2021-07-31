@@ -1,7 +1,6 @@
 <app-tasks-list title="TODO">
   <app-task *ngFor="let task of tasks$ | async" [task]="task" (onEdit)="editTask($event)"
-    (onDelete)="deleteTask($event)" (onComplete)="completeTask($event)"
-    [disabled]="task.id !== (editedTaskId$ | async)">
+    (onDelete)="deleteTask($event)" (onComplete)="completeTask($event)">
   </app-task>
 
   <!-- <li class="list-group-item" *ngFor="let task of tasks$ | async">
