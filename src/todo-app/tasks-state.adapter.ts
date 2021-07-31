@@ -24,10 +24,6 @@ export class TasksStateAdapter {
     this.taskState.deleteTask(taskId);
   }
 
-  disableTask() {
-    this.taskState.disableTask();
-  }
-
   editTask(task: TaskEditableData) {
     this.taskState.editTask(task);
   }
@@ -50,9 +46,5 @@ export class TasksStateAdapter {
 
   public get selectLastIdTask$() {
     return this.taskState.selectLastIdTask$;
-  }
-
-  public get editedTaskId$() {
-    return this.taskState.editedTaskId$;
   }
 }

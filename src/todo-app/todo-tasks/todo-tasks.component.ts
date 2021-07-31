@@ -12,10 +12,8 @@ export class TodoTasksComponent implements OnInit {
   @Output() onDelete = new EventEmitter<number>();
   @Output() onEdit = new EventEmitter<TaskEditableData>();
   @Output() onComplete = new EventEmitter<number>();
-  @Output() onDisable = new EventEmitter<number>();
 
   @Input() tasks$: Observable<Task[]>;
-  @Input() editedTaskId$: Observable<number>;
 
   constructor() {}
 
@@ -27,10 +25,6 @@ export class TodoTasksComponent implements OnInit {
 
   editTask(task: TaskEditableData) {
     this.onEdit.emit(task);
-  }
-
-  disableTask() {
-    this.onDisable.emit();
   }
 
   completeTask(id: number) {

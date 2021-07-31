@@ -9,7 +9,6 @@ import { TasksStateAdapter } from './tasks-state.adapter';
 export class TasksFacade {
   completedTasks$ = this.stateAdapter.selectCompletedTasks$;
   todoTasks$ = this.stateAdapter.selectTodoTasks$;
-  editedTask$ = this.stateAdapter.editedTaskId$;
 
   constructor(
     private readonly taskService: TasksApiService,
@@ -25,10 +24,6 @@ export class TasksFacade {
 
   editTask(task: TaskEditableData) {
     this.stateAdapter.editTask(task);
-  }
-
-  disableTask() {
-    this.stateAdapter.disableTask();
   }
 
   loadTasks() {
