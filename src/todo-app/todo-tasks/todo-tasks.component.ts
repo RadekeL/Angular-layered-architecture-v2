@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Task } from '../../interfaces/task.interface';
+import { TaskEditableData } from '../../types/tasks.types';
 
 @Component({
   selector: 'app-todo-tasks',
@@ -9,7 +10,7 @@ import { Task } from '../../interfaces/task.interface';
 })
 export class TodoTasksComponent implements OnInit {
   @Output() onDelete = new EventEmitter<number>();
-  @Output() onEdit = new EventEmitter<string>();
+  @Output() onEdit = new EventEmitter<TaskEditableData>();
   @Output() onComplete = new EventEmitter<number>();
   @Output() onDisable = new EventEmitter<number>();
 
@@ -24,7 +25,7 @@ export class TodoTasksComponent implements OnInit {
     this.onDelete.emit(id);
   }
 
-  editTask(task: string) {
+  editTask(task: TaskEditableData) {
     this.onEdit.emit(task);
   }
 

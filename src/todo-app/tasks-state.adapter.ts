@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Task } from '../interfaces/task.interface';
+import { TaskEditableData } from '../types/tasks.types';
 import { TasksStateComponent } from './tasks-state.component';
 
 @Injectable()
@@ -27,7 +28,7 @@ export class TasksStateAdapter {
     this.taskState.disableTask();
   }
 
-  editTask(task: string) {
+  editTask(task: TaskEditableData) {
     this.taskState.editTask(task);
   }
 

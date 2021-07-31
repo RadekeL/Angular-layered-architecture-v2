@@ -1,4 +1,6 @@
 import { Injectable } from '@angular/core';
+import { Task } from '../interfaces/task.interface';
+import { TaskEditableData } from '../types/tasks.types';
 import { TasksApiService } from './tasks-api.service';
 import { TasksFactory } from './tasks-factory';
 import { TasksStateAdapter } from './tasks-state.adapter';
@@ -21,7 +23,7 @@ export class TasksFacade {
     });
   }
 
-  editTask(task: string) {
+  editTask(task: TaskEditableData) {
     this.stateAdapter.editTask(task);
   }
 

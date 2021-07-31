@@ -5,7 +5,6 @@
 (change)="completeTask()" aria-label="Checkbox for following text input">
 
     {{task.title}}
-  <!-- <input #taskField type="text" class="form-control" [value]="task.title" aria-label="Recipient's username" (blur)="lockTask($event)" (keyup.enter)="lockTask($event)" aria-describedby="button-addon2" [disabled]="disabled"> -->
 
   <button   mat-button (click)="editTask()"> Edit</button>
   <button (click)="deleteTask()">Delete</button>

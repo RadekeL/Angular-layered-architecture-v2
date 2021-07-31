@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { first, map, mergeMap, tap, toArray } from 'rxjs/operators';
 import { USER_ID } from '../consts';
 import { Task } from '../interfaces/task.interface';
+import { TaskEditableData } from '../types/tasks.types';
 import { TaskModel } from './models/task.model';
 
 type TasksState = {
@@ -52,8 +53,11 @@ export class TasksStateComponent implements OnInit {
     this.setTasks(tasks);
   }
 
-  public editTask(editedTaskId: string) {
-    // this._state$.next({ ...this._state$.value, editedTaskId });
+  public editTask(editedTask: TaskEditableData) {
+    const { tasks } = this._state$.getValue();
+    const index = tasks.findIndex(task => task.id === editedTask.id);
+    tasks[index] = { ...tasks[index], title: editedTask.title };
+    this.setTasks(tasks);
   }
 
   public disableTask() {

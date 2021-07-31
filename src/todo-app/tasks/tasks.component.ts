@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { TasksFacade } from '../tasks-facade';
 import { Task } from '../../interfaces/task.interface';
+import { tap } from 'rxjs';
+import { TaskEditableData } from '../../types/tasks.types';
 
 @Component({
   selector: 'app-tasks',
@@ -23,7 +25,7 @@ export class TasksComponent implements OnInit {
     this.facade.addTask(task);
   }
 
-  editTask(task: string) {
+  editTask(task: TaskEditableData) {
     this.facade.editTask(task);
   }
 
@@ -31,13 +33,9 @@ export class TasksComponent implements OnInit {
     this.facade.disableTask();
   }
 
-  loadTasks() {}
-
   completeTask(id: number) {
     this.facade.completeTask(id);
   }
-
-  todoTask() {}
 
   deleteTask(taskId: number) {
     this.facade.deleteTask(taskId);

@@ -9,7 +9,6 @@ import { Task } from '../../interfaces/task.interface';
 })
 export class CompletedTasksComponent implements OnInit {
   @Output() onDelete = new EventEmitter<number>();
-  @Output() onEdit = new EventEmitter<string>();
   @Input() tasks$: Observable<Task[]>;
   constructor() {}
 
@@ -17,8 +16,5 @@ export class CompletedTasksComponent implements OnInit {
 
   deleteTask(id: number) {
     this.onDelete.emit(id);
-  }
-  editTask(task: string) {
-    this.onEdit.emit(task);
   }
 }

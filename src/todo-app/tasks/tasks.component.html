@@ -10,7 +10,7 @@
         (onDisable)="disableTask()" [editedTaskId$]="editedTaskId$" [tasks$]="todoTasks$"></app-todo-tasks>
     </div>
     <div class="col">
-      <app-completed-tasks (onDelete)="deleteTask($event)" (onEdit)="editTask($event)" [tasks$]="completedTasks$">
+      <app-completed-tasks (onDelete)="deleteTask($event)" [tasks$]="completedTasks$">
       </app-completed-tasks>
     </div>
   </div>
