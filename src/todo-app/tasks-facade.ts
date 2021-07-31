@@ -21,8 +21,8 @@ export class TasksFacade {
     });
   }
 
-  editTask(id: number) {
-    this.stateAdapter.editTask(id);
+  editTask(task: string) {
+    this.stateAdapter.editTask(task);
   }
 
   disableTask() {

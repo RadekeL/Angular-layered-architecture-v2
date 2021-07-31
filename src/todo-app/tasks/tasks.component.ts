@@ -23,8 +23,8 @@ export class TasksComponent implements OnInit {
     this.facade.addTask(task);
   }
 
-  editTask(id: number) {
-    this.facade.editTask(id);
+  editTask(task: string) {
+    this.facade.editTask(task);
   }
 
   disableTask() {

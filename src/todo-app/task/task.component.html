@@ -7,20 +7,10 @@
 (change)="completeTask()" aria-label="Checkbox for following text input">
     </div>
 
-    <input #taskField type="text" class="form-control" [value]="task.title" aria-label="Recipient's username" aria-describedby="button-addon2" [disabled]="disabled">
+    <input #taskField type="text" class="form-control" [value]="task.title" aria-label="Recipient's username" (blur)="lockTask($event)" (keyup.enter)="lockTask($event)" aria-describedby="button-addon2" [disabled]="disabled">
 
-    <button (click)="editTask()">Edit</button>
+    <button   mat-button (click)="editTask()" [disabled]="!disabled"> Edit</button>
     <button (click)="deleteTask()">Delete</button>
 
-    <!-- </div> -->
   </div>
-
-  <!-- <input *ngIf="!task.completed" class="form-check-input me-1"
-type="checkbox"
-[checked]="task.completed"
-(change)="completeTask()"
-value="true" aria-label="...">
-
-  <input [value]="task.title" [disabled]="disabled" class="task_title" type="text"/> -->
-  <!-- {{ task.title }} + {{ disabled }} -->
 </li>

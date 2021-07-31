@@ -21,6 +21,8 @@ import { DropdownMenuComponent } from '../dropdown-menu/dropdown-menu.component'
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MaterialModule } from '../material-module/material-module';
+import { DialogComponent } from '../dialog/dialog.component';
+import { MatNativeDateModule } from '@angular/material/core';
 
 @NgModule({
   imports: [
@@ -30,10 +32,12 @@ import { MaterialModule } from '../material-module/material-module';
     MatMenuModule,
     PortalModule,
     BrowserAnimationsModule,
+    MatNativeDateModule,
     MatAutocompleteModule,
-    MaterialModule,
+    MaterialModule
   ],
   declarations: [
+    DialogComponent,
     AppComponent,
     HelloComponent,
     AddTasksComponent,
@@ -44,7 +48,7 @@ import { MaterialModule } from '../material-module/material-module';
     TaskComponent,
     DropdownMenuComponent
   ],
-  entryComponents: [DropdownMenuComponent],
+  entryComponents: [DialogComponent, AppComponent],
   providers: [
     TasksStateComponent,
     TasksApiService,

@@ -52,8 +52,8 @@ export class TasksStateComponent implements OnInit {
     this.setTasks(tasks);
   }
 
-  public editTask(editedTaskId: number) {
-    this._state$.next({ ...this._state$.value, editedTaskId });
+  public editTask(editedTaskId: string) {
+    // this._state$.next({ ...this._state$.value, editedTaskId });
   }
 
   public disableTask() {

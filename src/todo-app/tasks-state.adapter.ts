@@ -27,8 +27,8 @@ export class TasksStateAdapter {
     this.taskState.disableTask();
   }
 
-  editTask(id: number) {
-    this.taskState.editTask(id);
+  editTask(task: string) {
+    this.taskState.editTask(task);
   }
 
   public get selectLastIdTask(): Observable<number> {

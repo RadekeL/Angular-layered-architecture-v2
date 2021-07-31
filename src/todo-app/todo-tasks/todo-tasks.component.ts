@@ -9,7 +9,7 @@ import { Task } from '../../interfaces/task.interface';
 })
 export class TodoTasksComponent implements OnInit {
   @Output() onDelete = new EventEmitter<number>();
-  @Output() onEdit = new EventEmitter<number>();
+  @Output() onEdit = new EventEmitter<string>();
   @Output() onComplete = new EventEmitter<number>();
   @Output() onDisable = new EventEmitter<number>();
 
@@ -24,8 +24,8 @@ export class TodoTasksComponent implements OnInit {
     this.onDelete.emit(id);
   }
 
-  editTask(id: number) {
-    this.onEdit.emit(id);
+  editTask(task: string) {
+    this.onEdit.emit(task);
   }
 
   disableTask() {
