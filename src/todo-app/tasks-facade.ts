@@ -19,7 +19,6 @@ export class TasksFacade {
 
   addTask(title: string) {
     this.stateAdapter.selectLastIdTask$.subscribe((lastId: number) => {
-      console.log(lastId);
       const task = taskFactory(title, lastId);
       this.stateAdapter.addTask(task);
     });
