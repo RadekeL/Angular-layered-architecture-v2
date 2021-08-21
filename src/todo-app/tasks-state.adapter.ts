@@ -7,44 +7,14 @@ import { TasksStateComponent } from './tasks-state.component';
 @Injectable()
 export class TasksStateAdapter {
   constructor(private readonly taskState: TasksStateComponent) {}
-
-  addTask(task: Task) {
-    this.taskState.addTask(task);
-  }
-
-  setTasks(tasks: Task[]) {
-    this.taskState.setTasks(tasks);
-  }
-
-  completeTask(id: number) {
-    this.taskState.completeTask(id);
-  }
-
-  deleteTask(taskId: number) {
-    this.taskState.deleteTask(taskId);
-  }
-
-  editTask(task: TaskEditableData) {
-    this.taskState.editTask(task);
-  }
-
-  public get selectLastIdTask(): Observable<number> {
-    return this.taskState.selectLastIdTask$;
-  }
-
-  public get selectTasks$(): Observable<Task[]> {
-    return this.taskState.selectTasks$;
-  }
-
-  public get selectTodoTasks$() {
-    return this.taskState.selectTodoTasks$;
-  }
-
-  public get selectCompletedTasks$() {
-    return this.taskState.selectCompletedTasks$;
-  }
-
-  public get selectLastIdTask$() {
-    return this.taskState.selectLastIdTask$;
-  }
+  addTask = this.taskState.addTask.bind(this.taskState);
+  setTasks = this.taskState.setTasks.bind(this.taskState);
+  completeTask = this.taskState.completeTask.bind(this.taskState);
+  deleteTask = this.taskState.deleteTask.bind(this.taskState);
+  editTask = this.taskState.editTask.bind(this.taskState);
+  public selectLastIdTask = this.taskState.selectLastIdTask$;
+  public selectTasks$ = this.taskState.selectTasks$;
+  public selectTodoTasks$ = this.taskState.selectTodoTasks$;
+  public selectCompletedTasks$ = this.taskState.selectCompletedTasks$;
+  public selectLastIdTask$ = this.taskState.selectLastIdTask$;
 }

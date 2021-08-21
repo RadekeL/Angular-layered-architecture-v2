@@ -45,9 +45,8 @@ export class TasksStateComponent implements OnInit {
   public completeTask(taskId: number) {
     const { tasks } = this._state$.getValue();
     const index = tasks.findIndex(task => task.id === taskId);
-
     tasks[index] = { ...tasks[index], completed: true };
-    this.setTasks(tasks);
+    this.setTasks([...tasks]);
   }
 
   public editTask(editedTask: TaskEditableData) {
@@ -59,10 +58,7 @@ export class TasksStateComponent implements OnInit {
 
   // ** Selectors
   public get selectTasks$(): Observable<Task[]> {
-    return this._stateAsObservable$.pipe(
-      pluck('tasks'),
-      map((tasks: Task[]) => tasks.filter(task => task.userId === USER_ID))
-    );
+    return this._stateAsObservable$.pipe(pluck('tasks'));
   }
 
   public get selectTodoTasks$(): Observable<Task[]> {

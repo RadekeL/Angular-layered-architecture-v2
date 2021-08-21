@@ -1,8 +1,10 @@
 import { Injectable } from '@angular/core';
+import { filter, map } from 'rxjs/operators';
+import { USER_ID } from '../consts';
 import { Task } from '../interfaces/task.interface';
 import { TaskEditableData } from '../types/tasks.types';
 import { TasksApiService } from './tasks-api.service';
-import { TasksFactory } from './tasks-factory';
+import { taskFactory } from './tasks-factory';
 import { TasksStateAdapter } from './tasks-state.adapter';
 
 @Injectable()
@@ -17,7 +19,8 @@ export class TasksFacade {
 
   addTask(title: string) {
     this.stateAdapter.selectLastIdTask$.subscribe((lastId: number) => {
-      const task = new TasksFactory(title, lastId).create();
+      console.log(lastId);
+      const task = taskFactory(title, lastId);
       this.stateAdapter.addTask(task);
     });
   }
@@ -27,9 +30,14 @@ export class TasksFacade {
   }
 
   loadTasks() {
-    this.taskService.getTasks().subscribe(tasks => {
-      this.stateAdapter.setTasks(tasks);
-    });
+    this.taskService
+      .getTasks()
+      .pipe(
+        map((tasks: Task[]) => tasks.filter(task => task.userId === USER_ID))
+      )
+      .subscribe(tasks => {
+        this.stateAdapter.setTasks(tasks);
+      });
   }
 
   completeTask(id: number) {

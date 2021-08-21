@@ -6,12 +6,18 @@
   </div>
   <div class="row">
     <div class="col">
-      <app-todo-tasks (onComplete)="completeTask($event)" (onDelete)="deleteTask($event)" (onEdit)="editTask($event)"
-        [tasks$]="todoTasks$"></app-todo-tasks>
+      <app-tasks-list title="TODO">
+        <app-task *ngFor="let task of todoTasks$ | async" [task]="task" (onEdit)="editTask($event)"
+          (onDelete)="deleteTask($event)" (onComplete)="completeTask($event)">
+        </app-task>
+      </app-tasks-list>
     </div>
     <div class="col">
-      <app-completed-tasks (onDelete)="deleteTask($event)" [tasks$]="completedTasks$">
-      </app-completed-tasks>
+      <app-tasks-list title="COMPLETED">
+        <app-task *ngFor="let task of completedTasks$ | async" [task]="task" (onDelete)="deleteTask($event)"
+          (onEdit)="editTask($event)">
+        </app-task>
+      </app-tasks-list>
     </div>
   </div>
 </div>
