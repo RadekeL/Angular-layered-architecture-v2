@@ -1,26 +1,27 @@
-import { NullTemplateVisitor } from "@angular/compiler/public_api";
-import { Injectable } from "@angular/core";
-import { BehaviorSubject, Observable } from "rxjs";
+import { NullTemplateVisitor } from '@angular/compiler/public_api';
+import { Injectable } from '@angular/core';
+import { BehaviorSubject, Observable } from 'rxjs';
 
 type State = {
-  xx: 1
-}
-
+  xx?: 1;
+};
 
 @Injectable()
-export class StateManager {
-    private _initState: State = null;
+export class StateManager<StateType> {
+  private _initState: StateType = null;
 
-    private _state$ = new BehaviorSubject<State>(this._initState)
+  private _state$ = new BehaviorSubject<StateType>(this._initState);
 
-    public state$: Observable<State> = this._state$.asObservable();
+  public state$: Observable<StateType> = this._state$.asObservable();
 
-    select() {
-      // 
-    }
+  update(data: Partial<StateType>) {
+    this._state$.next({
+      ...this._state$.getValue(),
+      ...data
+    });
+  }
 
-
-    action() {
-
-    }
+  stateSnapshot(): StateType {
+    return this._state$.getValue();
+  }
 }
