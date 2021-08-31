@@ -6,13 +6,14 @@ type State = {
   xx?: 1;
 };
 
-@Injectable()
 export class StateManager<StateType> {
-  private _initState: StateType = null;
+  private _state$: BehaviorSubject<StateType>;
+  public selectState$: Observable<StateType>;
 
-  private _state$ = new BehaviorSubject<StateType>(this._initState);
-
-  public state$: Observable<StateType> = this._state$.asObservable();
+  constructor(initialState: StateType) {
+    this._state$ = new BehaviorSubject<StateType>(initialState);
+    this.selectState$ = this._state$.asObservable();
+  }
 
   update(data: Partial<StateType>) {
     this._state$.next({

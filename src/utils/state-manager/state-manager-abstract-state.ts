@@ -12,5 +12,7 @@ export abstract class AbstractState<StateType> {
       selectPipe
     );
   }
-  action() {}
+  action(data: Partial<StateType>) {
+    // this.stateManger.update(data);
+  }
 }

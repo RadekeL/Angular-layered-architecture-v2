@@ -3,6 +3,7 @@ import { filter, map } from 'rxjs/operators';
 import { USER_ID } from '../consts';
 import { Task } from '../interfaces/task.interface';
 import { TaskEditableData } from '../types/tasks.types';
+import { StateManagerTESTING } from './state-manager-testing';
 import { TasksApiService } from './tasks-api.service';
 import { taskFactory } from './tasks-factory';
 import { TasksStateAdapter } from './tasks-state.adapter';
