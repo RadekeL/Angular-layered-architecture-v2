@@ -14,7 +14,7 @@ export class AppComponent {
     public dialog: MatDialog,
     private readonly stateManagerTESTING: StateManagerTESTING
   ) {
-    
+    console.log(stateManagerTESTING)
   }
 
   openDialog() {
