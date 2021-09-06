@@ -22,8 +22,8 @@ import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MaterialModule } from '../material-module/material-module';
 import { DialogComponent } from '../dialog/dialog.component';
 import { MatNativeDateModule } from '@angular/material/core';
-import { StateManagerTESTING } from '../todo-app/state-manager-testing';
 import { StateManager } from '../utils/state-manager/state-manager';
+import { StateManagerTESTING } from '../todo-app/state-manager-testing';
 
 @NgModule({
   imports: [
